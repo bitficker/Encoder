@@ -18,4 +18,9 @@
       <Folder Include="Interfaces\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="DomainContent.txt" />
+      <None Remove="NewFile1.txt" />
+    </ItemGroup>
+
 </Project>
