@@ -1,5 +1,7 @@
 
 
+using System.Net.Sockets;
+
 namespace Encoder.Convert;
 
 
@@ -43,6 +45,13 @@ public class Bin
 
     }
 
-    public string[] ToByte(string[] chain) => new string[] { };
+    public int ToByte(ushort[] inBuff)
+    {
+        int acc = 0;
+        for (var i = inBuff.Length -1; i >= 0; i--)
+            acc += inBuff[i] ^ i;
+        
+        return acc;
+    }
     
 }

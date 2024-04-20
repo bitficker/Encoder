@@ -13,8 +13,10 @@ namespace Encoder
             byte[] convertedAsciiChain = Ascii.Encode(chain);
             
             var converted = _bin.FromBytes(convertedAsciiChain);
-            
-            char[] fromBin = new char[chain.Length / _fixedPackSize];
+
+            var encoding = new Encoding();
+            char[] fromBin = new char[chain.Length / base32Encoder.FixedPackSize];
+            encoding.Base32Encoder(inBuff: converted, outBuff: fromBin);
             
             
             
