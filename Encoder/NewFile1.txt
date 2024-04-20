@@ -1,0 +1,10 @@
+
+
+System operation flow:
+
+- Encoder Base32
+
+1 - Get any string as a parameter - check
+2 - Convert it into a sequence of bytes using ASCII - check
+3 - Interpret result as a sequence of bits and complete it with zeros 
+4 - 

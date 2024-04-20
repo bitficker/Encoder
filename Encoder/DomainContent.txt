@@ -1,0 +1,17 @@
+
+
+ASCII Table [ENCODING] (American Standard Code For Information Exchange):
+
+2^7 = 128 possible values (7 bits)
+Ex. 0101011, 0000001, 0110111, etc
+Any 7 bits binary representation can be mapped into ASCII Table
+
+Doc
+No metodo BinaryConversionByRecursiveDivision o byte e dividido sequencialmente por 2, 
+anotando o resto e retendo o quociente para a divisao subsequente.
+
+O array de bytes e iniciado com 8 zeros, pois temos no maximo 7 bits por componente e a sequencia de bytes 
+precisa ser preenchida com um ultimo zero a esquerda (bit mais significativo) para compor grupos validos
+para codificacao em base32. O array e preenchido do tail para o head e e previamente populado para
+facilitar o retorno do valor final.
+
