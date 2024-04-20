@@ -8,7 +8,7 @@ internal static class Ascii
     {
         byte[] sbytes = new byte[chain.Length];
 
-        for (var i = 0; i < chain.Length; i++)
+        foreach (var c in chain)
         {
             var v = (byte)chain[i];
             
@@ -20,7 +20,7 @@ internal static class Ascii
             sbytes[i] = v;
             
         }
-
+        
         return sbytes;
     }
 

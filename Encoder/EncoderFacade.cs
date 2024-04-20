@@ -4,21 +4,20 @@ using Encoder.Convert;
 namespace Encoder
 {
     
+    // Turn into static
     public class EncoderFacade
     {
-        private Bin _bin { get; set; } = new();
+        p
 
         public void Base32(string chain)
         {
             byte[] convertedAsciiChain = Ascii.Encode(chain);
             
-            var convertedBin = _bin.FromBytes(convertedAsciiChain);
+            var convertedBin = BinConverter.FromBytes(convertedAsciiChain);
 
             var encoding = new Encoding();
-            char[] fromBin = new char[chain.Length / base32Encoder.FixedPackSize];
+            char[] fromBin = new char[chain.Length / encoding.Fixed32PackSize];
             encoding.Base32Encoder(inBuff: convertedBin, outBuff: fromBin);
-            
-            
             
         }
         

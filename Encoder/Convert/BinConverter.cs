@@ -5,13 +5,13 @@ using System.Net.Sockets;
 namespace Encoder.Convert;
 
 
-public class Bin
+public static class BinConverter
 {
     private static ushort _fixedSizeArr = 8; 
-    internal string[] FromBytes(byte[] chain)
+    internal static int[] FromBytes(byte[] chain)
     { 
         
-        string[] packedBits = new string[chain.Length * 8];
+        int[] packedBits = new int[chain.Length * 8];
         for (var i = 1; i <= chain.Length * 8; i++)
         {
             var fromByte = FromByte(chain[i]);
@@ -23,7 +23,7 @@ public class Bin
     }
     
     // Implement recursion
-    public int[] FromByte(byte b, bool padding = false) 
+    public static int[] FromByte(byte b, bool padding = false) 
     {
         
         int[] bits = new[] { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -45,7 +45,7 @@ public class Bin
 
     }
 
-    public int ToByte(int[] inBuff)
+    public static int ToByte(int[] inBuff)
     {
         var acc = 0;
         for (var i = inBuff.Length -1; i >= 0; i--)
