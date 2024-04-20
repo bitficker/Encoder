@@ -10,6 +10,7 @@
       <Compile Remove="Convert\Encoding.cs" />
       <Compile Remove="EncoderFacade.cs" />
       <Compile Remove="Interfaces\IEncoder.cs" />
+      <Compile Remove="Containers\EncoderByte.cs" />
     </ItemGroup>
 
     <ItemGroup>

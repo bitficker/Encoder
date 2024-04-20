@@ -28,6 +28,7 @@ public static class Base32
         }
         
         var convertedBin = BinConverter.FromBytes(convertedAscii);
+        
         char[] fromBin = new char[chain.Length / Fixed32PackSize];
         
         Encode(inBuff: convertedBin, outBuff: fromBin);
