@@ -11,8 +11,9 @@ public static class Base32
 
     public static char[] FromAscii(string chain)
     {
+        ArgumentException.ThrowIfNullOrEmpty(chain);
+        
         byte[] convertedAscii = new byte[chain.Length];
-
         var ctr = 0; // Legibilidade +
         foreach (var c in chain) // Legibilidade
         {
@@ -29,23 +30,18 @@ public static class Base32
         
         var convertedBin = BinConverter.FromBytes(convertedAscii);
         
-        char[] fromBin = new char[chain.Length / Fixed32PackSize];
+        char[] base32FromBin = new char[chain.Length / Fixed32PackSize];
         
-        Encode(inBuff: convertedBin, outBuff: fromBin);
+        Encode(inBuff: convertedBin, outBuff: base32FromBin);
         
-        return fromBin;
+        return base32FromBin;
     }
     
     private static void Encode(int[] inBuff, char[] outBuff)
     {
-        // needed?
-        if (inBuff.Length == 0)
-            throw new ArgumentException("Char chain is invalid");
-
-        var outBuffSize = outBuff.Length;
-        if (outBuffSize != (inBuff.Length / Fixed32PackSize))
-            throw new IndexOutOfRangeException("Out buffer must have fixed size");
-        
+        // var outBuffSize = outBuff.Length;
+        // if (outBuffSize != (inBuff.Length / Fixed32PackSize))
+        //     throw new IndexOutOfRangeException("Out buffer must have fixed size");
         
         // Unrolling technique
         for (var i = 0; i < inBuff.Length; i += Fixed32PackSize)

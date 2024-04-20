@@ -11,6 +11,7 @@
       <Compile Remove="EncoderFacade.cs" />
       <Compile Remove="Interfaces\IEncoder.cs" />
       <Compile Remove="Containers\EncoderByte.cs" />
+      <Compile Remove="Convert\Ascii.cs" />
     </ItemGroup>
 
     <ItemGroup>
