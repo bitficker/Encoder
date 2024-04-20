@@ -8,7 +8,10 @@ internal class Encoding
     // Composition
     private Bin _bin = new();
 
-    internal void Base32Encoder(string[] inBuff, char[] outBuff)
+    private string Base32Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+    private string Base64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    
+    internal void Base32Encoder(int[] inBuff, char[] outBuff)
     {
         // needed?
         if (inBuff.Length == 0)
@@ -25,9 +28,17 @@ internal class Encoding
             // avoid abstractions
             var unpackedByte = _bin.ToByte(inBuff[new Range(i, i + FixedPackSize)]);
             
-            unpackedByte.CopyTo(outBuff, i);
+            // mapear para tabela base32
+            outBuff[i] = Base32Table[unpackedByte];
+            
         }
 
+        
+    }
+    
+    internal void Base64Encoder(int[] inBuff, char[] outBuff)
+    {
+        throw new NotImplementedException();
         
     }
     

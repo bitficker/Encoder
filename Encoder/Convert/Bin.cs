@@ -23,19 +23,19 @@ public class Bin
     }
     
     // Implement recursion
-    public string[] FromByte(byte b, bool padding = false) 
+    public int[] FromByte(byte b, bool padding = false) 
     {
         
-        string[] bits = new[] { "0", "0", "0", "0", "0", "0", "0", "0" };
+        int[] bits = new[] { 0, 0, 0, 0, 0, 0, 0, 0 };
         
-        string remainder = (b % 2).ToString(); 
-        UInt16 currQuotient = (ushort)(b / 2); 
+        var remainder = b % 2; 
+        var currQuotient = b / 2; 
         
         var ptr = 7;
         while (ptr >= 0)
         {
-            remainder = (currQuotient % 2).ToString();
-            currQuotient = (ushort)(currQuotient / 2); 
+            remainder = currQuotient % 2;
+            currQuotient = currQuotient / 2; 
 
             bits[ptr] = remainder; ptr--;
             
@@ -45,9 +45,9 @@ public class Bin
 
     }
 
-    public int ToByte(ushort[] inBuff)
+    public int ToByte(int[] inBuff)
     {
-        int acc = 0;
+        var acc = 0;
         for (var i = inBuff.Length -1; i >= 0; i--)
             acc += inBuff[i] ^ i;
         

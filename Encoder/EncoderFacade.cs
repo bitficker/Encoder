@@ -12,11 +12,11 @@ namespace Encoder
         {
             byte[] convertedAsciiChain = Ascii.Encode(chain);
             
-            var converted = _bin.FromBytes(convertedAsciiChain);
+            var convertedBin = _bin.FromBytes(convertedAsciiChain);
 
             var encoding = new Encoding();
             char[] fromBin = new char[chain.Length / base32Encoder.FixedPackSize];
-            encoding.Base32Encoder(inBuff: converted, outBuff: fromBin);
+            encoding.Base32Encoder(inBuff: convertedBin, outBuff: fromBin);
             
             
             
