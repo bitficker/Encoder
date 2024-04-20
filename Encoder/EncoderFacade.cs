@@ -1,21 +1,32 @@
 
-
 using Encoder.Convert;
 
 namespace Encoder
 {
     
-    public static class Encoding
+    public class EncoderFacade
     {
+        private Bin _bin { get; set; } = new();
 
-        public static void Base32(string chain)
+        public void Base32(string chain)
         {
-            byte[] convertedChain = Ascii.Encode(chain);
+            byte[] convertedAsciiChain = Ascii.Encode(chain);
+            
+            var converted = _bin.FromBytes(convertedAsciiChain);
+            
+            char[] fromBin = new char[chain.Length / _fixedPackSize];
             
             
             
-            Console.WriteLine("Hello World!");
         }
+        
+        // public void Base64(string chain)
+        // {
+        //     byte[] convertedAsciiChain = Ascii.Encode(chain);
+        //     var encoded = _bin.Run(convertedAsciiChain);
+        //     
+        //     
+        // }
         
         
     }

@@ -11,6 +11,8 @@ internal static class Ascii
         for (var i = 0; i < chain.Length; i++)
         {
             var v = (byte)chain[i];
+            
+            Console.WriteLine("v:"+ v);
 
             if (v > 127)
                 throw new InvalidOperationException();
