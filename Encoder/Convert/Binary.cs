@@ -4,37 +4,34 @@ using Encoder.Containers;
 namespace Encoder.Convert;
 
 
-internal class Binary
+public class Binary
 {
-
-    // Retornar um arr multidimensional com grupos de 5 bits
-    internal string[][] Bin(byte[] chain, EncodingType encodingType)
-    {
-        var builder = new StringBuilder();
-
+    private const ushort FixedSizeArr = 8; 
+    internal string[] Bin(byte[] chain, EncodingType encodingType)
+    { 
+        string[] packedBits = new string[chain.Length * 8];
+        
         if (encodingType is EncodingType.Base_32)
         {
-            string[][] fiveBitGroupArr = new string[chain.Length][];
-
-            for (var i = 0; i < chain.Length; i++)
+            for (var i = 1; i <= chain.Length * 8; i++)
             {
-                var value = BinaryConversionByRecursiveDivision(chain[i]);
+                var fromByte = FromByte(chain[i]);
+
+                fromByte.CopyTo(packedBits, i * FixedSizeArr);
             }
 
-            return fiveBitGroupArr;
+            return packedBits;
 
         }
         else if (encodingType is EncodingType.Base_64)
-        {
-            // Implementar
             throw new NotImplementedException();
-        }
-        
-        // return something
+
+
+        return packedBits;
     }
 
     // Aplicar recursion
-    private string[] BinaryConversionByRecursiveDivision(byte b)
+    public string[] FromByte(byte b, bool padding = false) 
     {
         
         string[] bits = new[] { "0", "0", "0", "0", "0", "0", "0", "0" };
@@ -55,12 +52,4 @@ internal class Binary
         return bits;
 
     }
-
-    // private string DivideBy2()
-    // {
-    //     // var remainder = (quotient % 2).ToString();
-    //     //     
-    //     // quotient = b / 2;
-    // }
-    
 }
